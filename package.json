@@ -1,0 +1,29 @@
+{
+  "name": "duitang-server",
+  "version": "1.0.0",
+  "description": "just for learn express mongodb as apiServer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qingtianbuyu/DuiTang-Server-Node.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "18352566805@163.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qingtianbuyu/DuiTang-Server-Node/issues"
+  },
+  "homepage": "https://github.com/qingtianbuyu/DuiTang-Server-Node#readme",
+  "devDependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.5"
+  }
+}
