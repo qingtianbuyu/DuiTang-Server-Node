@@ -1,0 +1,18 @@
+//通用返回数据格式
+var RestResult = function () {
+	this.errorCode = RestResult.NO_ERROR;
+	this.message = '';
+	this.data = {};
+	this.listData = [];
+}
+
+//操作成功(添加,删除,更新等)
+RestResult.NO_ERROR = 0;
+//查询操作没有数据
+RestResult.NO_DATA  = 1;
+//认证错误
+RestResult.AUTH_ERROR_CODE  = 2;
+//服务器未知错误
+RestResult.SERVER_EXCEPTION_ERROR = 5;
+
+module.exports = RestResult;
