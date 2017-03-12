@@ -41,13 +41,18 @@ module.exports = {
         var result = new RestResult();
         UserModel.findOne({'phone': phone})
             .then((doc) => {
-                if (doc && doc.password == password) {
-                    var userEntity = {};
-                    userEntity.username = doc.username;
-                    userEntity.phone = doc.phone;
-                    result.message = "登录成功!";
-                    result.data = userEntity;
-                    callback(result);
+                if (doc) {
+                    if (doc.password == password) {
+                        var userEntity = {};
+                        userEntity.username = doc.username;
+                        userEntity.phone = doc.phone;
+                        result.message = "登录成功!";
+                        result.data = userEntity;
+                        callback(result);
+                    } else {
+                        result.message = "用户密码错误,请检查密码!";
+                        callback(result);
+                    }
                     return;
                 }
 
@@ -55,9 +60,9 @@ module.exports = {
                 callback(result);
 
             }).catch((err) => {
-            result.errorCode = RestResult.ERROR;
-            result.message = "登录失败!";
-            callback(result);
+                result.errorCode = RestResult.ERROR;
+                result.message = "登录失败!";
+                callback(result);
         });
     }
 }
