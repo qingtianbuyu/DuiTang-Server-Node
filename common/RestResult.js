@@ -3,8 +3,16 @@ var RestResult = function () {
 	this.errorCode = RestResult.NO_ERROR;
 	this.message = '';
 	this.data = {};
-	this.listData = [];
 }
+
+var ObjectList = function () {
+    this.total = 0;
+    this.next_start = 0;
+    this.object_list = [];
+    this.more = 0;
+    this.limit = 0;
+}
+
 
 //操作成功(添加,删除,更新等)
 RestResult.NO_ERROR = 0;

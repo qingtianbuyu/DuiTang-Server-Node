@@ -57,8 +57,7 @@ router.post('/user/login', (req, res, next) => {
         return;
     }
 
-
-    loginService.login(name, pwd, (result) => {
+    loginService.login(phone, pwd, (result) => {
         res.send(result);
     });
 });
