@@ -8,10 +8,13 @@ var RestResult = function () {
 
 //操作成功(添加,删除,更新等)
 RestResult.NO_ERROR = 0;
-//查询操作没有数据
-RestResult.NO_DATA  = 1;
+//操作失败
+RestResult.ERROR  = 1;
+
 //认证错误
 RestResult.AUTH_ERROR_CODE  = 2;
+//路由匹配错误
+RestResult.ROUTERS_ERROR  = 4;
 //服务器未知错误
 RestResult.SERVER_EXCEPTION_ERROR = 5;
 

@@ -1,8 +1,12 @@
 'use strict';
-var User = require('../lib/mongo').User;
+var AlbumModel = require('../models/album').AlbumModel;
+
 
 module.exports = {
-	create: function (msg){
-		return User.create(msg).exec();
+	create: function (callback){
+		var albumModel = new AlbumModel({status:1, sender_id:1245});
+		albumModel.save(function(err, row){
+				
+		});
 	}
 }

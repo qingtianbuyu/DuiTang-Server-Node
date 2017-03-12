@@ -2,10 +2,11 @@ var express = require('express')
 var router  = express.Router();
 
 
-var albumController = require('../service/albumService');
+var albumService = require('../service/albumService');
 
 router.get('/album/create', (req, res, next) => {
-	 res.send(albumController.create('ok'))
+	 res.send(albumService.create())
 });
+
 
 module.exports = router
