@@ -12,7 +12,6 @@ log4js.use(app);
 var routes = require('./routes');
 routes(app);
 
-
-app.listen(3000, function() {
+app.listen(9001, function() {
 	console.log('Ready');
 });

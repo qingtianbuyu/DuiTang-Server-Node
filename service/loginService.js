@@ -44,18 +44,20 @@ module.exports = {
                 if (doc) {
                     if (doc.password == password) {
                         var userEntity = {};
+                        userEntity.id = doc._id;
                         userEntity.username = doc.username;
                         userEntity.phone = doc.phone;
                         result.message = "登录成功!";
                         result.data = userEntity;
                         callback(result);
                     } else {
-                        result.message = "用户密码错误,请检查密码!";
+                        result.errorCode = RestResult.ERROR;
+                        result.message = "登录失败,请检查用户名及密码!";
                         callback(result);
                     }
                     return;
                 }
-
+                result.errorCode = RestResult.ERROR;
                 result.message = "用户不存在,请检查账号!";
                 callback(result);
 

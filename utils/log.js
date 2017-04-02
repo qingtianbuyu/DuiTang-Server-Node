@@ -39,6 +39,6 @@ exports.logger = function (name, level) {
 exports.use = function (app, level) {
     app.use(log4js.connectLogger(log4js.getLogger('logInfo'), {
         level: levels[level] || levels['debug'],
-        format: ':method :url :status'
+        format: ':remote-addr :method :url :status'
     }));
 };
