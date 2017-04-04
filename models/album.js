@@ -1,4 +1,5 @@
-var TagSchema = require('./tag').TagSchema;
+var mongoosePaginate = require('mongoose-paginate');
+
 var base = require('./BaseModel');
 var objectId = base.ObjectId;
 
@@ -10,6 +11,7 @@ var AlbumSchema = new base.Schema({
 	tags: [String],
 	create_at: {type: Date, default: Date.now},
 });
+AlbumSchema.plugin(mongoosePaginate);
 
 var AlbumModel = base.mongoose.model('AlbumModel', AlbumSchema, 'album');
 exports.AlbumModel = AlbumModel;

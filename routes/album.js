@@ -13,7 +13,6 @@ router.post('/album/create', (req, res) => {
     }
 
     var restResult = new RestResult();
-
     if(!album.user_id){
         restResult.errorCode = RestResult.ERROR
         restResult.message   = '请提交user_id!'
@@ -30,6 +29,16 @@ router.post('/album/create', (req, res) => {
     albumService.create(album, (result) => {
        res.send(result)
     });
+});
+
+
+//查询用户的专辑
+router.get('/album/list', (req, res) => {
+    var userId = req.query.userId;
+    var page   = req.query.page | 1;
+    albumService.listByUserId(userId,page, (result) => {
+        res.send(result);
+    })
 });
 
 

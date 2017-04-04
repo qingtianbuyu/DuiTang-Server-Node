@@ -1,5 +1,6 @@
 'use strict';
 var RestResult = require('../common/RestResult');
+var ObjectList = require('../common/ObjectList')
 var AlbumModel = require('../models').AlbumModel;
 
 
@@ -18,5 +19,27 @@ module.exports = {
                 result.message = "注册失败!";
                 callback(result);
 		});
-	}
+	},
+
+    listByUserId: function (userId,page, callback) {
+		var restResult = new RestResult()
+
+        var options = {
+            page: page,
+            limit: 10,
+            select: 'name desc create_at'
+        }
+		AlbumModel.paginate({user_id: userId}, options)
+			.then((result) => {
+				var objectList = new ObjectList(result.total, 0,result.docs, 0,result.limit);
+                restResult.data = objectList
+				restResult.message = '查询成功!'
+				callback(restResult)
+			}).catch((err) => {
+				restResult.errorCode = RestResult.ERROR
+				restResult.message = '查询失败!'
+				callback(restResult)
+		})
+    }
+
 }
