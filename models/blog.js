@@ -2,8 +2,8 @@ var base = require('./BaseModel');
 var objectId = base.ObjectId;
 
 var BlogSchema = new base.Schema({
-    album_id: String,
-    sender_id: Number,
+    album: { type: base.Schema.Types.ObjectId, ref: 'AlbumModel'},
+    sender: { type: base.Schema.Types.ObjectId, ref: 'UserModel'},
     favorite_count:Number,
     extra_type: String,
     msg: String,

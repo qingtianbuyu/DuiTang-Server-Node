@@ -2,23 +2,25 @@
 var RestResult = require('../common/RestResult');
 var ObjectList = require('../common/ObjectList')
 var AlbumModel = require('../models').AlbumModel;
-
+var UserModel  = require('../models').UserModel
 
 module.exports = {
 
 	create: function (album,callback){
         var result = new RestResult();
-		var albumModel = new AlbumModel(album);
-		albumModel.save()
-			.then((doc) => {
-		        result.data = doc.id;
+        var albumModel = new AlbumModel(album);
+        albumModel.save()
+            .then((doc) => {
+                result.data = doc.id;
                 result.message = "创建成功!";
                 callback(result)
-			}).catch( (err) => {
+            }).catch( (err) => {
+                console.log(err)
                 result.errorCode = RestResult.ERROR;
-                result.message = "注册失败!";
+                result.message = err
                 callback(result);
-		});
+        })
+
 	},
 
     listByUserId: function (userId,page, callback) {
@@ -27,9 +29,17 @@ module.exports = {
         var options = {
             page: page,
             limit: 10,
-            select: 'name desc create_at'
+            select: 'name desc create_at user',
+            populate: [
+                {
+                    path: 'user', select:'username phone'
+                }
+            ]
         }
-		AlbumModel.paginate({user_id: userId}, options)
+
+        var query = {user: userId}
+
+		AlbumModel.paginate(query, options)
 			.then((result) => {
 				var objectList = new ObjectList(result.total, 0,result.docs, 0,result.limit);
                 restResult.data = objectList

@@ -6,7 +6,8 @@ var UserSchema = new base.Schema({
 	username: String,
 	password: String,
     phone: { type: String, unique: true,required: true },
-	avatar: String
+	avatar: String,
+	albums: [{type: base.Schema.Types.ObjectId, ref:'AlbumModel'}]
 });
 
 var UserModel = base.mongoose.model('UserModel', UserSchema, 'user');

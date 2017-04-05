@@ -9,13 +9,13 @@ router.post('/album/create', (req, res) => {
         name: req.body.name,
         desc: req.body.desc,
         tags: req.body.tags,
-        user_id: req.body.user_id
+        user: req.body.userId
     }
 
     var restResult = new RestResult();
-    if(!album.user_id){
+    if(!album.user){
         restResult.errorCode = RestResult.ERROR
-        restResult.message   = '请提交user_id!'
+        restResult.message   = '请提交userId!'
         res.send(restResult);
         return;
     }
