@@ -2,7 +2,6 @@
 var RestResult = require('../common/RestResult');
 var ObjectList = require('../common/ObjectList')
 var AlbumModel = require('../models').AlbumModel;
-var UserModel  = require('../models').UserModel
 
 module.exports = {
 

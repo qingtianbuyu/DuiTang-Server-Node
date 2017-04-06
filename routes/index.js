@@ -25,6 +25,7 @@ module.exports = function (app) {
     //***************在此处添加路由模块******************
     app.use('/api', require('./album'));
     app.use('/api', require('./user'));
+    app.use('/api', require('./blog'))
 
     //***********************************************
 

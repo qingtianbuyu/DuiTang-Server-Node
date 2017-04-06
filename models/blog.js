@@ -1,3 +1,4 @@
+var mongoosePaginate = require('mongoose-paginate');
 var base = require('./BaseModel');
 var objectId = base.ObjectId;
 
@@ -15,8 +16,9 @@ var BlogSchema = new base.Schema({
     reply_count: Number,
     source_link: String,
     add_datetime: {type: Date, default: Date.now},
-    photo: {path: String, width: Number, height: Number, _id: false}
+    photo: {path: String, width: Number, height: Number}
 });
+BlogSchema.plugin(mongoosePaginate);
 
 var BlogModel = base.mongoose.model('BlogModel', BlogSchema, 'blog');
 exports.BlogModel = BlogModel;
