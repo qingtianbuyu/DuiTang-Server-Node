@@ -26,6 +26,7 @@ module.exports = function (app) {
     app.use('/api', require('./album'));
     app.use('/api', require('./user'));
     app.use('/api', require('./blog'))
+    app.use('/api', require('./qiniu'))
 
     //***********************************************
 
