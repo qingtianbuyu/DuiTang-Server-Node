@@ -10,14 +10,14 @@ qiniu.conf.SECRET_KEY = config.qiniuConfig.SECRET_KEY;
 let bucket = config.qiniuConfig.Bucket;
 
 //构建上传策略函数
-function uptoken(bucket) {
-    var putPolicy = new qiniu.rs.PutPolicy(bucket);
+function uptoken(bucket,key) {
+    var putPolicy = new qiniu.rs.PutPolicy(bucket,key);
     return  putPolicy.token()
 }
 
 //生成上传 Token
-var generateTokenWithKing = function (fileName) {
-    this.token = uptoken(bucket, fileName)
+var generateTokenWithKing = function (key) {
+    this.token = uptoken(bucket, key)
 }
 
 module.exports = generateTokenWithKing

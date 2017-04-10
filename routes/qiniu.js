@@ -7,11 +7,10 @@ var RestResult = require('../common/RestResult');
 let QiniuHelper = require('../utils/qiniuHelper')
 
 router.post('/qiniu/token', (req, res) => {
-
+    var key = req.body.key;
     var restResult = new RestResult()
     restResult.message = 'token 获取成功!';
-    var token = new QiniuHelper('123.png');
-    restResult.data = token
+    restResult.data = new QiniuHelper(key);
     res.send(restResult)
 })
 
