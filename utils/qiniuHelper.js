@@ -9,11 +9,20 @@ qiniu.conf.SECRET_KEY = config.qiniuConfig.SECRET_KEY;
 //要上传的空间
 let bucket = config.qiniuConfig.Bucket;
 
+
+const policy = (name, key) => {
+    return {
+        scope: name
+    }
+}
+
+
 //构建上传策略函数
 function uptoken(bucket,key) {
-    var putPolicy = new qiniu.rs.PutPolicy(bucket,key);
+    var putPolicy = new qiniu.rs.PutPolicy2(policy(bucket));
     return  putPolicy.token()
 }
+
 
 //生成上传 Token
 var generateTokenWithKing = function (key) {
